@@ -1,0 +1,117 @@
+<html>
+    <head>
+        <title>Log In Page</title>
+        <link rel="stylesheet" href="../css/mStyles.css">
+        <link rel="stylesheet" href="../css/mForms.css">
+
+    </head>
+
+    <body>
+        <div class="row" id="header">
+        </div>
+        <div class="content">
+            <h1>SignUp</h1>
+
+            <form action="backend/sigup.php" method="POST" name="signupform">
+                <label for "fn">First Name</label>
+                <br>
+                <input type="text" id="fn" name="firstname"class="mtxt">
+                <br>
+                <label for "ln">Last Name</label>
+                <br>
+                <input type="text" id="ln" name="lastname"class="mtxt">
+                <br>
+                <label for "password">Password</label>
+                <br>
+                <input type="text" id="password" name="password" class="mtxt">
+                <br>
+                <label for "cpassword">Confirm Password</label>
+                <br>
+                <input type="text" id="cpassword" name="cpassword" class="mtxt">
+                <br>
+
+                <input type="radio" name="sex" id="rfemale" value="f" checked>
+                <label for="rfemale">Female</label>
+                <input type="radio" name="sex" id="rmale" value="m">
+                <label for="rmale">Male</label>
+                <br>
+
+                <input type="radio" name="age" id="above" value="above" checked>
+                <label for="above">above 18 years old</label>
+                <input type="radio" name="age" id="below" value="below">
+                <label for="below">below 18 years old</label>
+                <br>
+
+                <label for="language">Select Language</label>
+                <select name="language">
+                    <option value="-1">--</option>
+                    <option value="english">EN</option>
+                    <option value="spanish">SP</option>
+                    <option value="french">FR</option>
+                </select>
+                <br>
+                <input type="checkbox" id="capcha" name="capcha">
+                <label for="capcha">I'm not a robot</label>
+                <br>
+                <input type="button" value="SignUp" class="mButton" onclick=SignUp()>
+                <input type="button" value="Cancel"class="mButton" onclick=clearform()>
+                
+            </form>
+
+        </div>
+<script>
+    function SignUp(){
+        var mForm=document.querySelector("form[name='signupform']");
+        var fname=mForm.elements["firstname"].value;
+        var lname=mForm.elements["lastname"].value;
+        var pass=mForm.elements["password"].value;
+        var cpass=mForm.elements["cpassword"].value;
+        var sex=mForm.elements['sex'].value;
+        var age=mForm.elements['age'].value;
+        var language=mForm.elements['language'].value;
+        var capcha=mForm.elements['capcha'].checked;
+
+
+        console.log("First Name: "+fname);
+        console.log("Last Name: "+lname);
+        console.log("Password: "+pass);
+        console.log("Confirm Password: "+cpass);
+
+        console.log("Sex:"+sex);
+        console.log("Age: "+age);
+        console.log("Language: "+language);
+        console.log("Capcha: "+capcha);
+
+        if ((pass=="")||(cpass!=pass)){
+            alert("Passwords should be eaqual and not empty");
+        }
+        else if(fname=="" || lname==""){
+            alert("Please fill all the fields");
+        }
+        else if(language==-1){
+            alert("Please select a language");
+        }
+        else if(capcha==false){
+            alert("Please verify that you are not a robot");
+        }
+        else{
+            mForm.submit();
+        }
+    }
+
+    function clearform(){
+        var mForm=document.querySelector("form[name='signupform']");
+        //mForm.reset();
+        mForm.elements["firstname"].value="";
+        mForm.elements["lastname"].value="";
+        mForm.elements["password"].value="";
+        mForm.elements["cpassword"].value="";
+        mForm.elements["sex"].value="f";
+        mForm.elements["age"].value="above";
+        mForm.elements["language"].value=-1;
+        mForm.elements["capcha"].checked=false;
+    }
+</script>
+    </body>
+
+</html>
