@@ -1,12 +1,13 @@
 <?php
+    session_start();
+    if (!isset($_SESSION["user"])){
+        header("location:../index.php");
+    }
 
     $a_users=array("john.doe","jane.smith","alice.jones");
     $a_status=array("0","1","1");   
  
 ?>
-
-
-
 
 <html>
     <head>

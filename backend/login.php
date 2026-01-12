@@ -1,5 +1,5 @@
 <?php
-
+    
     $user=$_POST['username'];
     $pass=$_POST['password'];
 
@@ -17,10 +17,12 @@
 
 
     if ($loggedIn){
-        echo "Login successful. Welcome, " . $user . "!";
+        session_start();
+        $_SESSION["user"]=$a_users[$i];
+        header("location:../pages/page1.php");
     } 
     else {
-        echo "Login failed. Invalid username or password.";
+        header("location:../index.php");
     }
 
 ?> 

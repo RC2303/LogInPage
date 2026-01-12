@@ -1,3 +1,8 @@
+<?php
+session_start();
+session_unset();
+session_destroy();
+?>
 <html>
     <head>
         <title>Log In Page</title>
@@ -8,9 +13,13 @@
 
     <body>
         <div class="row" id="header">
+            <div class="userInfo">Welcome<?php echo $_SESSION["user"]; ?>
+            <button onclick="window.location.replace('http://127.0.0.1/LogInPage');">LogOut</button></div>
         </div>
         <div class="content">
-            <h1>LogIn</h1>
+            
+            <h1 style="padding-top 10px;">LogIn</h1>
+
 
             <form action="backend/login.php" method="POST" id="loginform">
                 <label for "username">User Name</label>
@@ -25,7 +34,7 @@
                 <input type="button" value="Reset"class="mButton" onclick=clearform()>
                 
             </form>
-            <a href="pages/signup.html" style="margin-left:5; display: inline-block;"">SignUp...</a>
+            <a href="pages/signupT.html" style="margin-left:5; display: inline-block;"">SignUp...</a>
 
         </div>
 <script>
